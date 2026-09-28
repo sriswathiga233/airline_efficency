@@ -1,0 +1,128 @@
+AVIATION ANALYSIS REPORT
+
+Validation report:
+
+{'missing_values': {'Flight_ID': 0, 'Aircraft_Type': 0, 'Route': 0, 'Flight_Duration': 0, 'Turnaround_Time': 0, 'Route_Distance': 0, 'Passenger_Capacity': 0, 'Actual_Passengers': 0}, 'duplicate_rows': 0, 'dtypes': {'Flight_ID': 'object', 'Aircraft_Type': 'object', 'Route': 'object', 'Flight_Duration': 'float64', 'Turnaround_Time': 'float64', 'Route_Distance': 'int64', 'Passenger_Capacity': 'int64', 'Actual_Passengers': 'int64'}, 'negative_values': {'Flight_Duration': 0, 'Turnaround_Time': 0, 'Route_Distance': 0, 'Passenger_Capacity': 0, 'Actual_Passengers': 0}, 'invalid_passenger_counts': 0, 'remaining_missing': {'Flight_ID': 0, 'Aircraft_Type': 0, 'Route': 0, 'Flight_Duration': 0, 'Turnaround_Time': 0, 'Route_Distance': 0, 'Passenger_Capacity': 0, 'Actual_Passengers': 0}}
+
+
+Descriptive statistics:
+
+       Flight_Duration  Turnaround_Time  ...  Aircraft_Utilisation  Turnaround_Ratio
+count      1000.000000      1000.000000  ...           1000.000000       1000.000000
+mean          2.741780         0.840480  ...             73.590712         39.980910
+std           1.353033         0.261233  ...             11.407977         27.265737
+min           0.560000         0.350000  ...             34.536082          5.468750
+25%           1.987500         0.670000  ...             67.710782         22.174786
+50%           2.380000         0.790000  ...             75.328539         32.751812
+75%           3.502500         0.950000  ...             81.849949         47.686966
+max           6.460000         1.650000  ...             94.814815        189.552239
+
+[8 rows x 10 columns]
+
+
+Top aircraft comparison:
+
+  Aircraft_Type  avg_load_factor  avg_utilisation  count
+0          A320        83.550084        74.862362    264
+1          A321        80.700665        73.959791    205
+2          A350        73.951648        66.312799     70
+3        ATR 72        84.039352        77.928168    120
+4      B737-800        83.147629        73.751423    255
+5          B787        76.010425        68.202352     86
+
+
+Low occupancy routes (avg load < 70%):
+
+Lowest-occupancy routes (avg load < 70%):
+
+Empty DataFrame
+Columns: [Route, Passenger_Load_Factor]
+Index: []
+
+
+Inefficient aircraft-route combinations:
+
+    Aircraft_Type                Route  ...  avg_utilisation  flights
+44           A350      Chennai-Kolkata  ...        62.096479        3
+52           A350    Hyderabad-Kolkata  ...        61.610035        3
+107          B787    Hyderabad-Kolkata  ...        62.206958       10
+56           A350     Mumbai-Singapore  ...        80.152551        5
+97           B787        Chennai-Delhi  ...        71.243509        3
+38           A321       Mumbai-Kolkata  ...        75.611514       13
+18           A320       Mumbai-Kolkata  ...        76.916552       12
+111          B787       Mumbai-Kolkata  ...        66.662236        5
+41           A350        Chennai-Delhi  ...        66.377239        5
+99           B787      Chennai-Kolkata  ...        62.925000        4
+50           A350        Delhi-Kolkata  ...        60.739864        4
+43           A350    Chennai-Hyderabad  ...        45.007790        2
+108          B787     Mumbai-Bengaluru  ...        53.110869        3
+104          B787      Delhi-Hyderabad  ...        62.951131        7
+100          B787       Chennai-Mumbai  ...        61.976366        5
+49           A350      Delhi-Hyderabad  ...        60.993024        6
+45           A350       Chennai-Mumbai  ...        59.840546        4
+94           B787  Bengaluru-Hyderabad  ...        43.830986        2
+54           A350         Mumbai-Delhi  ...        58.769438        3
+53           A350     Mumbai-Bengaluru  ...        52.820346        5
+109          B787         Mumbai-Delhi  ...        63.636364        1
+25           A321    Chennai-Hyderabad  ...        50.939918       14
+79       B737-800    Chennai-Hyderabad  ...        55.834202       18
+105          B787        Delhi-Kolkata  ...        64.097642        6
+5            A320    Chennai-Hyderabad  ...        57.652624       12
+62         ATR 72    Chennai-Hyderabad  ...        61.727250       13
+20           A321  Bengaluru-Hyderabad  ...        52.139424        3
+59         ATR 72    Chennai-Bengaluru  ...        58.611671        7
+74       B737-800  Bengaluru-Hyderabad  ...        56.392611       16
+0            A320  Bengaluru-Hyderabad  ...        54.473073       14
+22           A321    Chennai-Bengaluru  ...        43.344318        6
+57         ATR 72  Bengaluru-Hyderabad  ...        64.834899        5
+76       B737-800    Chennai-Bengaluru  ...        50.735840       17
+2            A320    Chennai-Bengaluru  ...        48.245678       12
+96           B787    Chennai-Bengaluru  ...        36.279070        1
+
+[35 rows x 5 columns]
+
+
+Correlation matrix:
+
+                       Route_Distance  ...  Aircraft_Utilisation
+Route_Distance               1.000000  ...              0.738705
+Flight_Duration              0.990505  ...              0.779080
+Passenger_Load_Factor       -0.122347  ...             -0.040394
+Aircraft_Utilisation         0.738705  ...              1.000000
+
+[4 rows x 4 columns]
+
+
+Regression metrics and coefficients:
+
+{'r2': 0.014786290202155494, 'mae': 7.393779318315269, 'rmse': 9.201331671073984, 'coefficients': {'Route_Distance': np.float64(-0.009357859093490769), 'Flight_Duration': np.float64(6.342022140733181), 'Turnaround_Time': np.float64(-4.920785785303035), 'Passenger_Capacity': np.float64(-0.02110011149004798)}, 'intercept': np.float64(88.62888460823908)}
+
+
+Insights:
+
+- Overall passenger load factor: 81.6% (dataset average)
+
+- Overall aircraft utilisation: 73.6% (dataset average)
+
+- Aircraft type comparison: ATR 72: avg load 84.0%, avg utilisation 77.9% (n=120); A320: avg load 83.6%, avg utilisation 74.9% (n=264); B737-800: avg load 83.1%, avg utilisation 73.8% (n=255); A321: avg load 80.7%, avg utilisation 74.0% (n=205); B787: avg load 76.0%, avg utilisation 68.2% (n=86); A350: avg load 74.0%, avg utilisation 66.3% (n=70)
+
+- Route-level: Mumbai-Kolkata avg load 70.71%
+
+- Route-level: Hyderabad-Kolkata avg load 70.97%
+
+- Route-level: Chennai-Kolkata avg load 72.22%
+
+- Inefficient aircraft-route example: A350 + Chennai-Kolkata avg load 62.67%, avg utilisation 62.10%
+
+
+Recommendations:
+
+- Review deployment of large aircraft (e.g., A350, B787) on low-load routes and consider substitution where appropriate.
+
+- Consider smaller aircraft or adjust frequency on persistently lower-demand routes such as the lowest-occupancy routes reported.
+
+- Investigate turnaround performance for aircraft-route combinations with low utilisation and implement operational improvements.
+
+- Use load-factor thresholds (e.g., 70%) as a trigger for fleet/capacity review and operational action.
+
+- When planning aircraft deployment, consider route distance and observed operational utilisation, while recognising correlation does not establish causation.

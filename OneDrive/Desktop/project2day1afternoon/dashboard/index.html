@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Aviation Aircraft Efficiency Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>Aviation Aircraft Efficiency Dashboard</h1>
+      <p class="subtitle">"Is the Airline Using Its Aircraft Efficiently?"</p>
+    </div>
+    <nav class="nav">
+      <a href="#overview">Overview</a>
+      <a href="#aircraft">Aircraft</a>
+      <a href="#routes">Routes</a>
+      <a href="#efficiency">Efficiency</a>
+      <a href="#ml">Machine Learning</a>
+      <a href="#insights">Insights</a>
+      <a href="#recommendations">Recommendations</a>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <section id="overview" class="panel">
+      <h2>Overview</h2>
+      <div class="kpis" id="kpi-cards"></div>
+      <p class="muted">Passenger Load Factor measures how much of the available seating capacity is occupied, while Aircraft Utilisation measures the proportion of total operational time spent flying.</p>
+    </section>
+
+    <section id="aircraft" class="panel">
+      <h2>Aircraft Performance</h2>
+      <div class="charts two-col">
+        <div class="card">
+          <canvas id="chartLoad"></canvas>
+        </div>
+        <div class="card">
+          <canvas id="chartUtil"></canvas>
+        </div>
+      </div>
+      <p class="muted">The smaller/regional aircraft in this dataset show higher average utilisation and load factors than the larger wide-body aircraft.</p>
+    </section>
+
+    <section id="routes" class="panel">
+      <h2>Route Performance</h2>
+      <div class="card">
+        <canvas id="chartRoutes"></canvas>
+      </div>
+      <p class="muted">No route-level average falls below the 70% threshold, but these routes have the lowest average occupancy and warrant review.</p>
+    </section>
+
+    <section id="efficiency" class="panel">
+      <h2>Inefficient Aircraft-Route Combinations</h2>
+      <p class="muted">A combination is flagged when average Passenger Load Factor is below 70% OR average Aircraft Utilisation is below 65%.</p>
+      <div class="card table-wrap">
+        <table id="ineff-table">
+          <thead>
+            <tr><th>Aircraft Type</th><th>Route</th><th>Flights</th><th>Avg Load (%)</th><th>Avg Util (%)</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="eff-analysis" class="panel">
+      <h2>Route Distance vs Aircraft Utilisation</h2>
+      <div class="charts two-col">
+        <div class="card"><canvas id="chartDistUtil"></canvas></div>
+        <div class="card"><canvas id="chartDistLoad"></canvas></div>
+      </div>
+      <p class="muted">Route distance and aircraft utilisation show a strong positive association in this dataset. Correlation does not establish causation.</p>
+    </section>
+
+    <section id="ml" class="panel">
+      <h2>Machine Learning</h2>
+      <div class="ml-grid">
+        <div class="card metric"><h3>R²</h3><p id="ml-r2"></p></div>
+        <div class="card metric"><h3>MAE</h3><p id="ml-mae"></p></div>
+        <div class="card metric"><h3>RMSE</h3><p id="ml-rmse"></p></div>
+      </div>
+      <div class="card">
+        <h4>Coefficients</h4>
+        <pre id="ml-coefs"></pre>
+      </div>
+    </section>
+
+    <section id="insights" class="panel">
+      <h2>Key Insights</h2>
+      <div class="insights-grid" id="insight-cards"></div>
+    </section>
+
+    <section id="recommendations" class="panel">
+      <h2>Fleet Planning Action Plan</h2>
+      <div class="recommendations" id="reco-cards"></div>
+    </section>
+
+    <section id="conclusion" class="panel">
+      <h2>Final Conclusion</h2>
+      <div class="card conclusion">
+        <p>Overall, the dataset shows an average passenger load factor of 81.6% and aircraft utilisation of 73.6%. While route-level occupancy is generally above the 70% review threshold, several aircraft-route combinations show substantially lower efficiency. The analysis suggests that aircraft assignment and operational utilisation should be considered alongside route demand when planning fleet deployment.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div>DS_Day01_23 — Aviation Aircraft Efficiency Analysis</div>
+    <div>Built using Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, HTML, CSS and JavaScript.</div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

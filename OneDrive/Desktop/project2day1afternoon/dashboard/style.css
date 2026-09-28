@@ -1,0 +1,35 @@
+/* Simple modern dashboard styling */
+:root{--bg:#f6f8fa;--card:#ffffff;--muted:#6b7280;--accent:#0b69ff;--radius:12px}
+*{box-sizing:border-box;font-family:Inter,Segoe UI,Arial,sans-serif}
+body{margin:0;background:var(--bg);color:#0f172a}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:18px 28px;background:linear-gradient(90deg,#fff,#f8fafc);box-shadow:0 1px 8px rgba(15,23,42,0.04);position:sticky;top:0;z-index:10}
+.topbar .brand h1{margin:0;font-size:18px}
+.topbar .subtitle{margin:0;font-size:13px;color:var(--muted)}
+.nav a{margin-left:14px;color:#0f172a;text-decoration:none;font-weight:600;font-size:14px}
+.container{max-width:1200px;margin:22px auto;padding:0 18px}
+.panel{margin-bottom:24px}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:12px 0}
+.kpi{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:0 6px 20px rgba(2,6,23,0.04);text-align:left}
+.kpi h3{margin:0;font-size:22px}
+.kpi p{margin:6px 0 0;color:var(--muted)}
+.card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.04);}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.two-col .card{height:320px}
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+thead th{background:#f3f4f6;text-align:left;padding:10px;font-weight:700}
+tbody td{padding:10px;border-top:1px solid #eef2f7}
+.highlight{background:linear-gradient(90deg,rgba(11,105,255,0.06),transparent)}
+.muted{color:var(--muted);margin-top:8px}
+.ml-grid{display:flex;gap:12px}
+.metric{flex:1;text-align:center;padding:22px}
+.metric h3{margin:0;color:var(--muted)}
+.metric p{font-size:26px;margin:6px 0}
+.insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.insight{padding:14px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:0 6px 12px rgba(2,6,23,0.03)}
+.recommendations{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.reco{padding:12px;border-radius:10px;background:#fff}
+.conclusion{padding:18px}
+.footer{padding:18px;text-align:center;color:var(--muted);font-size:13px}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr}.insights-grid{grid-template-columns:repeat(2,1fr)}.recommendations{grid-template-columns:1fr}}
+@media(max-width:520px){.kpis{grid-template-columns:1fr}.insights-grid{grid-template-columns:1fr}}
