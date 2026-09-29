@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+.env
+venv/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.suo
+*.user
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Credentials / keys
+*.pem
+*.key
+*credentials*.csv
+*accessKeys*.csv
+*password*
+*secret*
+
+# Unrelated projects (OAuth, Java, Spring Boot)
+OAuth/
+Oauth/
+*.java
+*.jar
+*.war
+*.class
+springboot*/
